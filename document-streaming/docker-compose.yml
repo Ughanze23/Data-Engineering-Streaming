@@ -1,6 +1,12 @@
 version: "3"
 services:
 
+  api-ingest:
+    image: api-ingest
+    ports:
+      - '80:80'
+    networks:
+      - document-streaming
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
     ports:
