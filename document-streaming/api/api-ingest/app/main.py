@@ -67,7 +67,7 @@ def produce_kafka_string(message: str):
     try:
         # Initialize Kafka producer
         conf = {
-            'bootstrap.servers': 'localhost:9093',  # Adjust the port if necessary
+            'bootstrap.servers': 'kafka:9092',  # Adjust the port if necessary
             #'client.id': 'ride-booking-producer'
         }
         
