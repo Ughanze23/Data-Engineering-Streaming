@@ -10,6 +10,9 @@ from pydantic import BaseModel, Field
 from typing import Optional
 from datetime import datetime,time
 
+
+from confluent_kafka import Producer
+
 #create class (model) for the data to be ingested
 class RideBooking(BaseModel):
     Date: str = Field(..., example="2024-03-23")
@@ -48,9 +51,34 @@ async def post_ride_booking(ride_booking: RideBooking) -> JSONResponse:
 
         #print(ride_booking_json)
         print(ride_booking_json)
+
+        #prodcuce message to Kafka topic
+        produce_kafka_string(ride_booking_json)
         
         
         return JSONResponse(status_code=status.HTTP_201_CREATED, content={"message": "Ride booking data ingested successfully."})
     
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred while ingesting data: {str(e)}")
+    
+
+def produce_kafka_string(message: str):
+    """Send a string message to a Kafka topic."""
+    try:
+        # Initialize Kafka producer
+        conf = {
+            'bootstrap.servers': 'localhost:9093',  # Adjust the port if necessary
+            #'client.id': 'ride-booking-producer'
+        }
+        
+         # Create Producer instance
+        producer = Producer(conf)
+
+        # Send the message to the Kafka topic
+        producer.produce('ride-bookings', value=message.encode('utf-8'))
+
+         # Ensure all messages are delivered before function exits
+        producer.flush()
+    
+    except Exception as e:
+        print(f"An error occurred while producing message to Kafka: {str(e)}")
