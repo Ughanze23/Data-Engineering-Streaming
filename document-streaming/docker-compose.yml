@@ -34,6 +34,16 @@ services:
     networks:
       - document-streaming
 
+  spark:
+    image: 'jupyter/pyspark-notebook:spark-3'
+    ports:
+      - '8888:8888'
+      - "4040-4080:4040-4080"
+    volumes:
+      - ./ApacheSpark/:/home/ikenna/work
+    networks:
+      - document-streaming
+
 networks:
   document-streaming:
     driver: bridge
