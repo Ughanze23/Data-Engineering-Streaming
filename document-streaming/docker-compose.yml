@@ -35,12 +35,12 @@ services:
       - document-streaming
 
   spark:
-    image: 'jupyter/pyspark-notebook:spark-3'
+    image: 'jupyter/pyspark-notebook:latest'
     ports:
       - '8888:8888'
       - "4040-4080:4040-4080"
     volumes:
-      - ./ApacheSpark/:/home/ikenna/work
+      - ./ApacheSpark/:/users/ikennaughanze/work
     networks:
       - document-streaming
 
