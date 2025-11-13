@@ -3,7 +3,7 @@ from numpy import add
 import pandas as pd
 
 
-uber_df = pd.read_csv('../data/ncr_ride_bookings.csv')
+uber_df = pd.read_csv('../../data/ncr_ride_bookings.csv')
 
 #print(uber_df.head())
 
