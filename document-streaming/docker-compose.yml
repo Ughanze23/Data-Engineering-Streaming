@@ -74,7 +74,12 @@ services:
       - document-streaming
     depends_on:
       - mongo
-
+  streamlit-dashboard:
+    image: dashboard
+    ports:
+      - '8501:8501'
+    networks:
+      - document-streaming
 
 networks:
   document-streaming:
