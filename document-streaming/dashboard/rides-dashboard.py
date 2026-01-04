@@ -7,7 +7,8 @@ from datetime import datetime
 # ---------------------------------------
 # 🔌 Connect to MongoDB
 # ---------------------------------------
-client = MongoClient("mongodb://root:example@localhost:27017/?authSource=admin")
+#client = MongoClient("mongodb://root:example@localhost:27017/?authSource=admin")
+client = MongoClient("mongodb://root:example@mongo:27017/?authSource=admin")
 db = client["uberstreaming"]
 collection = db["bookings"]
 
