@@ -135,6 +135,7 @@ python api-client.py
 The client reads from a data file and posts records to the ingestion API with a configurable delay between requests.
 
 ### 5. View the Dashboard
+<img width="1762" height="1216" alt="image" src="https://github.com/user-attachments/assets/3f9639b1-ae88-4881-aa8d-57c8c20c9717" />
 
 Navigate to http://localhost:8501 to see the real-time dashboard with:
 
